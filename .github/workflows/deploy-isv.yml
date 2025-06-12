@@ -15,10 +15,7 @@ jobs:
 
   tenantDeploy:
     runs-on: ubuntu-latest
-    strategy:     
-      matrix:        
-        tenant: [TENANT_A, TENANT_B, TENANT_C]      
-
+   
     steps:
       - name: Check out the code
         uses: actions/checkout@v4
@@ -38,5 +35,5 @@ jobs:
           ${{ format('ISV_{0}', matrix.tenant) }}: ${{ secrets[format('ISV_{0}', matrix.tenant)] }}
         # Same python code for each tenant, but with different values for the 'tenant' argument  
         run: |
-          python scripts/deploy-isv.py --config-file "./config-isv.json" --tenant ${{ matrix.tenant }}
+          python scripts/deploy-isv.py --config-file "./config-isv.json" 
   
