@@ -30,9 +30,9 @@ jobs:
           python -m pip install ms-fabric-cli
 
       - name: Run Deployment Script
-        env:
+       # env:
           # Maps the GitHub secret 'ISV_<TenantName>' to the 'ISV_<TenantName>' environment variable
-          ${{ format('ISV_{0}', matrix.tenant) }}: ${{ secrets[format('ISV_{0}', matrix.tenant)] }}
+         # ${{ format('ISV_{0}', matrix.tenant) }}: ${{ secrets[format('ISV_{0}', matrix.tenant)] }}
         # Same python code for each tenant, but with different values for the 'tenant' argument  
         run: |
           python scripts/deploy-isv.py --config-file "./config-isv.json" 
